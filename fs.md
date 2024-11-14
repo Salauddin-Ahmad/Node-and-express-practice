@@ -6,7 +6,8 @@ fs মডিউল ব্যবহার শুরু করা
 প্রথমে, fs মডিউলটি কোডে ইনক্লুড করতে হবে:
 
 ```javascript  
-codeconst fs = require('fs');`
+codeconst fs = require('fs');
+```
 
 ### ১. ফাইল পড়া (Reading Files)
 
@@ -15,14 +16,16 @@ codeconst fs = require('fs');`
 অ্যাসিঙ্ক্রোনাস পদ্ধতি ব্যবহারে কলব্যাক ফাংশন লাগে যা ফাইল পড়া শেষ হওয়ার পরে চালানো হয়। এর সুবিধা হলো এটি মূল থ্রেডকে ব্লক করে না।
 
 ```javascript 
-  codefs.readFile('path/to/file.txt', 'utf8', (err, data) => { if (err) throw err; console.log(data);  });`
+  codefs.readFile('path/to/file.txt', 'utf8', (err, data) => { if (err) throw err; console.log(data);  });
+  ```
 
 #### সিঙ্ক্রোনাস ফাইল পড়া (Synchronous)
 
 এই পদ্ধতি readFileSync ফাংশন ব্যবহার করে। এটি সম্পূর্ণ ফাইলটি পড়া শেষ না হওয়া পর্যন্ত কোডের পরবর্তী লাইনগুলো এক্সিকিউট করবে না।
 
 ```javascript 
- codeconst data = fs.readFileSync('path/to/file.txt', 'utf8');  console.log(data);`
+ codeconst data = fs.readFileSync('path/to/file.txt', 'utf8');  console.log(data);
+ ```
 
 ### ২. ফাইল লেখা (Writing Files)
 
@@ -31,14 +34,16 @@ codeconst fs = require('fs');`
 অ্যাসিঙ্ক্রোনাস ফাইল লেখায়, writeFile ব্যবহার করে নতুন কনটেন্ট যুক্ত করা হয় বা ফাইলটি তৈরি করা হয় যদি তা আগে থেকে না থাকে।
 
 ```javascript 
- codefs.writeFile('path/to/file.txt', 'Hello, world!', (err) => { if (err) throw err; console.log('File has been saved!');  });`
+ codefs.writeFile('path/to/file.txt', 'Hello, world!', (err) => { if (err) throw err; console.log('File has been saved!');  });
+ ```
 
 #### সিঙ্ক্রোনাস ফাইল লেখা (Synchronous)
 
 writeFileSync ব্যবহার করে সিঙ্ক্রোনাস লেখায়, ফাইল লেখা শেষ না হওয়া পর্যন্ত থ্রেড ব্লক থাকবে।
 
 ```javascript 
- codefs.writeFileSync('path/to/file.txt', 'Hello, world!');  console.log('File has been saved!');`
+ codefs.writeFileSync('path/to/file.txt', 'Hello, world!');  console.log('File has been saved!');
+ ```
 
 ### ৩. ফাইল মুছে ফেলা (Deleting Files)
 
