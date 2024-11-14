@@ -5,7 +5,8 @@ fs মডিউল ব্যবহার শুরু করা
 
 প্রথমে, fs মডিউলটি কোডে ইনক্লুড করতে হবে:
 
-`javascript /n codeconst fs = require('fs');`
+```javascript  
+codeconst fs = require('fs');`
 
 ### ১. ফাইল পড়া (Reading Files)
 
@@ -13,13 +14,15 @@ fs মডিউল ব্যবহার শুরু করা
 
 অ্যাসিঙ্ক্রোনাস পদ্ধতি ব্যবহারে কলব্যাক ফাংশন লাগে যা ফাইল পড়া শেষ হওয়ার পরে চালানো হয়। এর সুবিধা হলো এটি মূল থ্রেডকে ব্লক করে না।
 
-`javascript /n  codefs.readFile('path/to/file.txt', 'utf8', (err, data) => { if (err) throw err; console.log(data);  });`
+```javascript 
+  codefs.readFile('path/to/file.txt', 'utf8', (err, data) => { if (err) throw err; console.log(data);  });`
 
 #### সিঙ্ক্রোনাস ফাইল পড়া (Synchronous)
 
 এই পদ্ধতি readFileSync ফাংশন ব্যবহার করে। এটি সম্পূর্ণ ফাইলটি পড়া শেষ না হওয়া পর্যন্ত কোডের পরবর্তী লাইনগুলো এক্সিকিউট করবে না।
 
-`javascript /n codeconst data = fs.readFileSync('path/to/file.txt', 'utf8');  console.log(data);`
+```javascript 
+ codeconst data = fs.readFileSync('path/to/file.txt', 'utf8');  console.log(data);`
 
 ### ২. ফাইল লেখা (Writing Files)
 
@@ -27,13 +30,15 @@ fs মডিউল ব্যবহার শুরু করা
 
 অ্যাসিঙ্ক্রোনাস ফাইল লেখায়, writeFile ব্যবহার করে নতুন কনটেন্ট যুক্ত করা হয় বা ফাইলটি তৈরি করা হয় যদি তা আগে থেকে না থাকে।
 
-`javascript /n codefs.writeFile('path/to/file.txt', 'Hello, world!', (err) => { if (err) throw err; console.log('File has been saved!');  });`
+```javascript 
+ codefs.writeFile('path/to/file.txt', 'Hello, world!', (err) => { if (err) throw err; console.log('File has been saved!');  });`
 
 #### সিঙ্ক্রোনাস ফাইল লেখা (Synchronous)
 
 writeFileSync ব্যবহার করে সিঙ্ক্রোনাস লেখায়, ফাইল লেখা শেষ না হওয়া পর্যন্ত থ্রেড ব্লক থাকবে।
 
-`javascript /n codefs.writeFileSync('path/to/file.txt', 'Hello, world!');  console.log('File has been saved!');`
+```javascript 
+ codefs.writeFileSync('path/to/file.txt', 'Hello, world!');  console.log('File has been saved!');`
 
 ### ৩. ফাইল মুছে ফেলা (Deleting Files)
 
@@ -41,13 +46,17 @@ writeFileSync ব্যবহার করে সিঙ্ক্রোনাস 
 
 ফাইল মুছে ফেলার জন্য unlink ব্যবহার করা হয়। এটি কলব্যাকের মাধ্যমে কাজ শেষের নোটিফিকেশন দেয়।
 
-`javascript /n codefs.unlink('path/to/file.txt', (err) => { if (err) throw err; console.log('File has been deleted!');  });`
+```javascript 
+ codefs.unlink('path/to/file.txt', (err) => { if (err) throw err; console.log('File has been deleted!');  });
+ ```
 
 #### সিঙ্ক্রোনাস ফাইল মুছে ফেলা (Synchronous)
 
 unlinkSync ফাংশন ফাইল মুছে ফেলে এবং ব্লকিং মোডে কাজ করে।
 
-`javascript /n codefs.unlinkSync('path/to/file.txt');  console.log('File has been deleted!');`
+```javascript 
+ codefs.unlinkSync('path/to/file.txt');  console.log('File has been deleted!');
+ ```
 
 ### ৪. ফাইলের মেটাডাটা পড়া (Reading File Metadata)
 
@@ -55,11 +64,15 @@ fs.stat এবং fs.statSync পদ্ধতিগুলো ফাইলের 
 
 #### অ্যাসিঙ্ক্রোনাস মেটাডাটা পড়া
 
-`javascript /n codefs.stat('path/to/file.txt', (err, stats) => { if (err) throw err; console.log(stats);  });`
+```javascript 
+ codefs.stat('path/to/file.txt', (err, stats) => { if (err) throw err; console.log(stats);  });
+ ```
 
 #### সিঙ্ক্রোনাস মেটাডাটা পড়া
 
-`javascript /n codeconst stats = fs.statSync('path/to/file.txt');  console.log(stats);`
+```javascript 
+ codeconst stats = fs.statSync('path/to/file.txt');  console.log(stats);
+ ```
 
 ### ৫. ডিরেক্টরি তৈরি করা (Creating Directories)
 
@@ -67,11 +80,15 @@ mkdir এবং mkdirSync ডিরেক্টরি তৈরি করতে 
 
 #### অ্যাসিঙ্ক্রোনাস ডিরেক্টরি তৈরি
 
-`javascript /n codefs.mkdir('path/to/directory', { recursive: true }, (err) => { if (err) throw err; console.log('Directory created!');  });`
+```javascript 
+ codefs.mkdir('path/to/directory', { recursive: true }, (err) => { if (err) throw err; console.log('Directory created!');  });
+ ```
 
 #### সিঙ্ক্রোনাস ডিরেক্টরি তৈরি
 
- `javascript /n codefs.mkdirSync('path/to/directory', { recursive: true });  console.log('Directory created!');`
+ ```javascript 
+  codefs.mkdirSync('path/to/directory', { recursive: true });  console.log('Directory created!');
+  ```
 
 ### ৬. ফাইল অ্যাপেন্ড করা (Appending to Files)
 
@@ -79,11 +96,15 @@ mkdir এবং mkdirSync ডিরেক্টরি তৈরি করতে 
 
 #### অ্যাসিঙ্ক্রোনাস অ্যাপেন্ড
 
-`javascript /n codefs.appendFile('path/to/file.txt', '\nNew content appended!', (err) => { if (err) throw err; console.log('Content appended!');  });`
+```javascript 
+ codefs.appendFile('path/to/file.txt', '\nNew content appended!', (err) => { if (err) throw err; console.log('Content appended!');  });
+ ```
 
 #### সিঙ্ক্রোনাস অ্যাপেন্ড
 
-`javascript /n codefs.appendFileSync('path/to/file.txt', '\nNew content appended!');  console.log('Content appended!');`
+```javascript 
+ codefs.appendFileSync('path/to/file.txt', '\nNew content appended!');  console.log('Content appended!');
+ ```
 
 ### ৭. ফাইল পুনঃনামকরণ করা (Renaming Files)
 
@@ -91,11 +112,15 @@ rename এবং renameSync ফাইল পুনঃনামকরণের �
 
 #### অ্যাসিঙ্ক্রোনাস পুনঃনামকরণ
 
-`javascript /n codefs.rename('path/to/oldname.txt', 'path/to/newname.txt', (err) => { if (err) throw err; console.log('File renamed!');  });`
+```javascript 
+ codefs.rename('path/to/oldname.txt', 'path/to/newname.txt', (err) => { if (err) throw err; console.log('File renamed!');  });
+ ```
 
 #### সিঙ্ক্রোনাস পুনঃনামকরণ
 
-`javascript /n codefs.renameSync('path/to/oldname.txt', 'path/to/newname.txt');  console.log('File renamed!');`
+```javascript 
+ codefs.renameSync('path/to/oldname.txt', 'path/to/newname.txt');  console.log('File renamed!');
+ ```
 
 ### ৮. ডিরেক্টরি পড়া (Reading Directories)
 
@@ -103,11 +128,15 @@ rename এবং renameSync ফাইল পুনঃনামকরণের �
 
 #### অ্যাসিঙ্ক্রোনাস ডিরেক্টরি পড়া
 
-`javascript /n codefs.readdir('path/to/directory', (err, files) => { if (err) throw err; console.log(files);  });`
+```javascript 
+ codefs.readdir('path/to/directory', (err, files) => { if (err) throw err; console.log(files);  });
+ ```
 
 #### সিঙ্ক্রোনাস ডিরেক্টরি পড়া
 
-`javascript /n codeconst files = fs.readdirSync('path/to/directory');  console.log(files);`
+```javascript 
+ codeconst files = fs.readdirSync('path/to/directory');  console.log(files);
+ ```
 
 উপসংহার
 -------
