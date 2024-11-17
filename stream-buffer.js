@@ -17,18 +17,20 @@ server.on('request', (req, res) => {
 
     // Handle 'data' event to write chunks of the file to the response
     readableStream.on('data', (buffer) => {
+        res.statusCode = 200;
         res.write(buffer);
     });
-
+    
     // Handle 'end' event to signal the end of the response
     readableStream.on('end', () => {
+        res.statusCode = 200;
         res.end('hello from world!');
     });
 
     // Handle 'error' event in case the file can't be read
     readableStream.on('error', (err) => {
-        console.error('Error reading file:', err);
         res.statusCode = 500; // Internal Server Error
+        console.error('Error reading file:', err);
         res.end('Internal Server Error');
     });
 });
